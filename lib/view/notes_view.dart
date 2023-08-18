@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_show_modal_bottom_sheet.dart';
 import '../widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
@@ -24,12 +25,15 @@ class CustomFloatingActionButton extends StatelessWidget {
       child: const Icon(Icons.add, size: 32),
       onPressed: () {
         showModalBottomSheet(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           context: context,
           builder: (context) {
-            return Container();
+            return const CustomShowModalBottomSheet();
           },
         );
       },
     );
   }
 }
+
