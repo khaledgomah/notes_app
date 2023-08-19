@@ -12,7 +12,7 @@ class NoteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(
+      onLongPress: () => Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return const EditNoteView();
         },
