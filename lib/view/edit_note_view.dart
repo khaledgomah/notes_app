@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
-import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_feild.dart';
 
 class EditNoteView extends StatelessWidget {
@@ -11,10 +10,10 @@ class EditNoteView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: const [
-              CustomAppBar(title: 'Update'),
+              CustomAppBar(title: 'Update', icon: Icons.check),
               CustomTextField(hint: 'title'),
               SizedBox(
                 height: 16,
@@ -26,7 +25,6 @@ class EditNoteView extends StatelessWidget {
               SizedBox(
                 height: 32,
               ),
-              CustomButton(text: 'Update'),
             ],
           ),
         ),

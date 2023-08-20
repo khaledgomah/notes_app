@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'custom_search_icon.dart';
+import 'custom_app_bar_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
-  final Widget? endIcon;
+  final IconData icon;
   const CustomAppBar({
     super.key,
     required this.title,
-    this.endIcon,
+    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,8 +23,8 @@ class CustomAppBar extends StatelessWidget {
             title,
             style: GoogleFonts.poppins(fontSize: 32),
           ),
-          Container(
-            child: endIcon,
+          CustomAppBarIcon(
+            icon: icon,
           )
         ],
       ),
