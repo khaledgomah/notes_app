@@ -4,8 +4,10 @@ import '../constants.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
+  final void Function()?  onPressed;
+
   const CustomButton({
-    super.key, required this.text,
+    super.key, required this.text,required this.onPressed
   });
 
   @override
@@ -16,7 +18,7 @@ class CustomButton extends StatelessWidget {
           color: kPrimaryColor,
           borderRadius: BorderRadius.all(Radius.circular(8))),
       child: TextButton(
-          onPressed: () {},
+          onPressed: onPressed,
           child:  Text(
             text,
             style:const TextStyle(

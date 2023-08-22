@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.box(notesBox);
+  Hive.openBox(notesBox);
   runApp(const NotesApp());
 }
 

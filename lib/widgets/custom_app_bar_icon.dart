@@ -16,9 +16,12 @@ class CustomAppBarIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Colors.white.withOpacity(.04),
       ),
-      child: Icon(
-        icon,
-        size: 28,
+      child: IconButton(
+        onPressed: () {},
+        icon: Icon(
+          icon,
+          size: 28,
+        ),
       ),
     );
   }

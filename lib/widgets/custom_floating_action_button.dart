@@ -13,11 +13,15 @@ class CustomFloatingActionButton extends StatelessWidget {
       child: const Icon(Icons.add, size: 32),
       onPressed: () {
         showModalBottomSheet(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          isScrollControlled: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           context: context,
           builder: (context) {
-            return const CustomShowModalBottomSheet();
+            return SizedBox(
+                height: MediaQuery.of(context).copyWith().size.height * 0.75,
+                child: const AddNoteButtomSheet());
           },
         );
       },
