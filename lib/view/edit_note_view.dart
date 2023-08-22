@@ -7,12 +7,12 @@ class EditNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24),
           child: Column(
-            children: const [
+            children: [
               CustomAppBar(title: 'Update', icon: Icons.check),
               CustomTextField(hint: 'title'),
               SizedBox(
