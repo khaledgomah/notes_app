@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
 
-part 'notes_model.g.dart';
+part 'note_model.g.dart';
 
 @HiveType(typeId: 0)
-class NotesModel extends HiveObject{
+class NoteModel extends HiveObject {
   @HiveField(0)
   final String title;
   @HiveField(1)
@@ -12,7 +12,7 @@ class NotesModel extends HiveObject{
   final String date;
   @HiveField(3)
   final int color;
-  NotesModel(
+  NoteModel(
       {required this.color,
       required this.date,
       required this.subTitle,
