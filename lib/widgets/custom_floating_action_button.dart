@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 
 import 'add_note_buttom_sheet.dart';
 
@@ -21,7 +23,10 @@ class CustomFloatingActionButton extends StatelessWidget {
           builder: (context) {
             return SizedBox(
                 height: MediaQuery.of(context).copyWith().size.height * 0.75,
-                child: const AddNoteButtomSheet());
+                child:  BlocProvider(
+                  create: (context) => AddNoteCubit(),
+                  child:const AddNoteButtomSheet(),
+                ));
           },
         );
       },
