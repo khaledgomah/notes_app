@@ -20,11 +20,14 @@ class AddNoteButtomSheet extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is AddNoteLoading ? true : false,
-          child: const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: AddNoteForm(),
+        return ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          child: ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading? true:false,
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: AddNoteForm(),
+            ),
           ),
         );
       },
