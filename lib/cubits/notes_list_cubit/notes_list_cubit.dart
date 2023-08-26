@@ -6,4 +6,6 @@ part 'notes_list_state.dart';
 
 class NotesListCubit extends Cubit<NotesListState> {
   NotesListCubit() : super(NotesListInitial());
+
+  fetchNoteList(){}
 }
