@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:notes_app/cubits/notes_list_cubit/notes_list_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 
 import '../view/edit_note_view.dart';
 
 class NoteCard extends StatelessWidget {
   final NoteModel note;
-   final Color? color;
+  final Color? color;
 
   const NoteCard({
     super.key,
-    required this.note, this.color,
+    required this.note,
+    this.color,
   });
 
   @override
@@ -44,6 +47,8 @@ class NoteCard extends StatelessWidget {
                   trailing: IconButton(
                       onPressed: () {
                         note.delete();
+                        BlocProvider.of<NotesListCubit>(context)
+                            .fetchNoteList();
                       },
                       icon: const Padding(
                         padding: EdgeInsets.only(top: 16),

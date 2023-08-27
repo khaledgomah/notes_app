@@ -12,9 +12,6 @@ class NotesListCubit extends Cubit<NotesListState> {
   fetchNoteList() {
     var noteBox = Hive.box<NoteModel>(kNotesBox);
     notes = noteBox.values.toList();
-  }
-
-  deleteNote(index) {
-    notes![index].delete();
+    emit(NotesListSuccess());
   }
 }

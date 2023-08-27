@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/notes_list_cubit/notes_list_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_feild.dart';
@@ -18,13 +19,13 @@ class AddNoteForm extends StatefulWidget {
 class _AddNoteFormState extends State<AddNoteForm> {
   GlobalKey<FormState>? formKay = GlobalKey();
   int colorIndex = 0;
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String? title, subTitile;
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formKay,
-      autovalidateMode: autovalidateMode,
+      autovalidateMode: autoValidateMode,
       child: Column(
         children: [
           const SizedBox(
@@ -55,7 +56,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               if (formKay!.currentState!.validate()) {
                 formKay!.currentState!.save();
               } else {
-                autovalidateMode = AutovalidateMode.always;
+                autoValidateMode = AutovalidateMode.always;
                 setState(() {});
               }
               NoteModel note = NoteModel(
@@ -63,6 +64,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   subTitle: subTitile!,
                   title: title!);
               BlocProvider.of<AddNoteCubit>(context).addNote(note);
+              BlocProvider.of<NotesListCubit>(context).fetchNoteList();
             },
             text: 'add',
           )
