@@ -5,8 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import '../view/edit_note_view.dart';
 
 class NoteCard extends StatelessWidget {
+  final String title;
+  final String supTitle;
+  final String date;
   const NoteCard({
     super.key,
+    required this.title,
+    required this.supTitle, required this.date,
   });
 
   @override
@@ -27,12 +32,12 @@ class NoteCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                   title: Text(
-                    'My note',
+                    title,
                     style:
                         GoogleFonts.poppins(fontSize: 32, color: Colors.black),
                   ),
                   subtitle: Text(
-                    'this is a notes app',
+                   supTitle,
                     style: GoogleFonts.poppins(
                         fontSize: 24, color: Colors.black.withOpacity(.6)),
                   ),
@@ -49,7 +54,7 @@ class NoteCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                '18/8/2023',
+                date,
                 style: GoogleFonts.poppins(
                     fontSize: 16, color: Colors.black.withOpacity(0.6)),
               ),
