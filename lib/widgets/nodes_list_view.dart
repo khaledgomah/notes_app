@@ -12,6 +12,14 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List colors = [
+      Colors.blue,
+      Colors.amber,
+      Colors.brown,
+      Colors.blueAccent,
+      Colors.white
+    ];
+
     return BlocBuilder<NotesListCubit, NotesListState>(
       builder: (context, state) {
         BlocProvider.of<NotesListCubit>(context).fetchNoteList();
@@ -23,9 +31,9 @@ class NotesListView extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: NoteCard(
-                  title: notes[index].title,
-                  supTitle: notes[index].subTitle,
-                  date: notes[index].date),
+                note: notes[index],
+                color: colors[index % colors.length],
+              ),
             );
           },
         );
