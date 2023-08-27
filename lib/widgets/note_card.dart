@@ -9,12 +9,10 @@ import '../view/edit_note_view.dart';
 
 class NoteCard extends StatelessWidget {
   final NoteModel note;
-  final Color? color;
 
   const NoteCard({
     super.key,
     required this.note,
-    this.color,
   });
 
   @override
@@ -27,7 +25,7 @@ class NoteCard extends StatelessWidget {
       )),
       child: Container(
         decoration: BoxDecoration(
-            color: color, borderRadius: BorderRadius.circular(16)),
+            color: Color(note.color), borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
