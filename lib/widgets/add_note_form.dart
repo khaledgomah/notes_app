@@ -16,16 +16,19 @@ class AddNoteForm extends StatefulWidget {
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
-int colorIndex = 0;
-
 class _AddNoteFormState extends State<AddNoteForm> {
   List colors = [
     Colors.blue,
     Colors.amber,
     Colors.brown,
-    Colors.blueAccent,
-    Colors.white
+    Colors.red,
+    Colors.cyan,
+    Colors.deepOrangeAccent,
+    Colors.lime,
+    Colors.grey,
+    Colors.pink
   ];
+  MaterialColor noteColor = Colors.grey;
   GlobalKey<FormState>? formKay = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String? title, subTitile;
@@ -58,9 +61,34 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 32,
           ),
+          SizedBox(
+            height: 25,
+            child: ListView.builder(
+              itemCount: colors.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return IconButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () {
+                    noteColor = colors[index];
+                  },
+                  icon: Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
+                    width: 25,
+                    alignment: Alignment.center,
+                    color: colors[index],
+                  ),
+                );
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 32,
+          ),
           CustomButton(
             onPressed: () {
-              colorIndex++;
               if (formKay!.currentState!.validate()) {
                 formKay!.currentState!.save();
               } else {
@@ -71,12 +99,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   date: DateFormat.yMd().format(DateTime.now()),
                   subTitle: subTitile!,
                   title: title!,
-                  color: colors[colorIndex % colors.length].value);
+                  color: noteColor.value);
               BlocProvider.of<AddNoteCubit>(context).addNote(note);
               BlocProvider.of<NotesListCubit>(context).fetchNoteList();
             },
             text: 'add',
-          )
+          ),
         ],
       ),
     );

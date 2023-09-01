@@ -40,7 +40,7 @@ class NoteCard extends StatelessWidget {
                         GoogleFonts.poppins(fontSize: 32, color: Colors.black),
                   ),
                   subtitle: Text(
-                    note.subTitle ?? '',
+                    note.subTitle ,
                     style: GoogleFonts.poppins(
                         fontSize: 24, color: Colors.black.withOpacity(.6)),
                   ),
