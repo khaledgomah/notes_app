@@ -16,6 +16,8 @@ class AddNoteForm extends StatefulWidget {
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
+int colorIndex = 0;
+
 class _AddNoteFormState extends State<AddNoteForm> {
   List colors = [
     Colors.blue,
@@ -25,7 +27,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
     Colors.white
   ];
   GlobalKey<FormState>? formKay = GlobalKey();
-  int colorIndex = 0;
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String? title, subTitile;
   @override
@@ -69,7 +70,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
               NoteModel note = NoteModel(
                   date: DateFormat.yMd().format(DateTime.now()),
                   subTitle: subTitile!,
-                  title: title!, color:  colors[colorIndex % colors.length]);
+                  title: title!,
+                  color: colors[colorIndex % colors.length].value);
               BlocProvider.of<AddNoteCubit>(context).addNote(note);
               BlocProvider.of<NotesListCubit>(context).fetchNoteList();
             },

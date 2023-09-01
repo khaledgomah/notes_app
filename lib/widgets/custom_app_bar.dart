@@ -6,10 +6,11 @@ import 'custom_app_bar_icon.dart';
 class CustomAppBar extends StatelessWidget {
   final String title;
   final IconData icon;
+  final void Function()? onPressed;
   const CustomAppBar({
     super.key,
     required this.title,
-    required this.icon,
+    required this.icon, this.onPressed,
   });
 
   @override
@@ -24,6 +25,7 @@ class CustomAppBar extends StatelessWidget {
             style: GoogleFonts.poppins(fontSize: 32),
           ),
           CustomAppBarIcon(
+            onPressed: onPressed,
             icon: icon,
           )
         ],

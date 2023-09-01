@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomAppBarIcon extends StatelessWidget {
   final IconData icon;
+  final void Function()? onPressed;
   const CustomAppBarIcon({
     super.key,
-    required this.icon,
+    required this.icon, this.onPressed,
   });
 
   @override
@@ -17,7 +18,7 @@ class CustomAppBarIcon extends StatelessWidget {
         color: Colors.white.withOpacity(.04),
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: Icon(
           icon,
           size: 28,
