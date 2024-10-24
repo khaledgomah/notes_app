@@ -34,7 +34,7 @@ class NoteItem extends StatelessWidget {
             subtitle: Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: Text(
-                'This is my first note This is my first note This is my first note',
+                'This is my first note This is my first note This is my first notenote This is my first note',
                 style: TextStyle(
                     color: Colors.black.withOpacity(.7), fontSize: 20),
               ),
