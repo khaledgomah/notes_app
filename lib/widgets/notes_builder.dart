@@ -23,7 +23,7 @@ class NotesBuilder extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => EditView(
                     note: NoteModel(
-                        titile: 'hala',
+                        title: 'hala',
                         desc: 'hala walaa kef el ahwal',
                         date: DateTime.now(),
                         color: 0xff12452fea)),
