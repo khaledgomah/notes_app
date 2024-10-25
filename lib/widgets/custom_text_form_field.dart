@@ -5,24 +5,30 @@ import 'package:notes_app/constants.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.onChanged,
-    required this.labelText,
+    this.onSaved,
+    this.labelText,
     this.validator,
     this.obscureText = false,
     this.maxLines = 1,
+    this.onChanged, 
+     this.autovalidateMode,
   });
-  final Function(String) onChanged;
-  final String labelText;
+  final AutovalidateMode? autovalidateMode;
+  final void Function(String)? onChanged;
+  final void Function(String?)? onSaved;
+  final String? labelText;
   final String? Function(String?)? validator;
   final bool obscureText;
   final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: autovalidateMode,
+      onChanged: onChanged,
       maxLines: maxLines,
       obscureText: obscureText,
       validator: validator,
-      onChanged: onChanged,
+      onSaved: onSaved,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
           floatingLabelStyle: TextStyle(color: kPrimaryColor),
