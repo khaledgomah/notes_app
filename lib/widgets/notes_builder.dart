@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/note_item.dart';
 
@@ -14,7 +16,10 @@ class NotesBuilder extends StatelessWidget {
       separatorBuilder: (context, index) => const SizedBox(
         height: 10,
       ),
-      itemBuilder: (context, index) => const NoteItem(),
+      itemBuilder: (context, index) => NoteItem(
+        onTap: () {
+        },
+      ),
     ));
   }
 }
