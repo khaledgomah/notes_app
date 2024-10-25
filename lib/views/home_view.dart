@@ -31,13 +31,14 @@ class HomeView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: kViewPadding,
-          child: const Column(
+          child: Column(
             children: [
               CustomAppBar(
                 title: 'Notes',
                 icon: FontAwesomeIcons.magnifyingGlass,
+                onPressed: () {},
               ),
-              NotesBuilder(),
+              const NotesBuilder(),
             ],
           ),
         ),
