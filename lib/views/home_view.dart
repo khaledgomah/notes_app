@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/home_view_button_sheet.dart';
@@ -32,7 +33,10 @@ class HomeView extends StatelessWidget {
           padding: kViewPadding,
           child: const Column(
             children: [
-              CustomAppBar(),
+              CustomAppBar(
+                title: 'Notes',
+                icon: FontAwesomeIcons.magnifyingGlass,
+              ),
               NotesBuilder(),
             ],
           ),

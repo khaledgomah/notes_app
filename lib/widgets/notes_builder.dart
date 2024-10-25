@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/views/edit_view.dart';
 import 'package:notes_app/widgets/note_item.dart';
 
 class NotesBuilder extends StatelessWidget {
@@ -18,6 +18,16 @@ class NotesBuilder extends StatelessWidget {
       ),
       itemBuilder: (context, index) => NoteItem(
         onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditView(
+                    note: NoteModel(
+                        titile: 'hala',
+                        desc: 'hala walaa kef el ahwal',
+                        date: DateTime.now(),
+                        color: 0xff12452fea)),
+              ));
         },
       ),
     ));
