@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
-import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_form_field.dart';
 
 class EditView extends StatelessWidget {
