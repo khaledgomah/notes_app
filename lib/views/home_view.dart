@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
-import 'package:notes_app/widgets/custom_text_form_field.dart';
-import 'package:notes_app/widgets/home_view_buttpm_sheet.dart';
+import 'package:notes_app/widgets/home_view_button_sheet.dart';
 import 'package:notes_app/widgets/notes_builder.dart';
 
 class HomeView extends StatelessWidget {

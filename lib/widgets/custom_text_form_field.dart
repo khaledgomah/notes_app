@@ -34,7 +34,6 @@ class CustomTextFormField extends StatelessWidget {
           ),
           border: const OutlineInputBorder(),
           labelText: labelText,
-          
           focusColor: const Color.fromARGB(8, 255, 255, 255),
           labelStyle: const TextStyle(color: Colors.white)),
     );
