@@ -9,7 +9,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     this.validator,
     this.obscureText = false,
-    this.maxLines,
+    this.maxLines = 1,
   });
   final Function(String) onChanged;
   final String labelText;
