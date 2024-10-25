@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/views/home_view.dart';
 
 void main() {
@@ -13,7 +14,10 @@ class NotesApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const HomeView(),
-      theme: ThemeData(brightness: Brightness.dark),
+      theme: ThemeData(
+          brightness: Brightness.dark,
+          floatingActionButtonTheme:
+              FloatingActionButtonThemeData(backgroundColor: kPrimaryColor)),
     );
   }
 }
