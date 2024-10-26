@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/views/edit_view.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
-    super.key, required this.onTap,
+    super.key,
+    required this.note,
   });
-final VoidCallback onTap;
+  final NoteModel note;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditView(
+                  note: NoteModel(
+                      title: note.title,
+                      desc: note.desc,
+                      creatAt: note.creatAt,
+                      color: note.color)),
+            ));
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
@@ -29,24 +44,24 @@ final VoidCallback onTap;
                   ),
                 ],
               ),
-              title: const Text(
-                'My note',
-                style: TextStyle(fontSize: 28),
+              title: Text(
+                note.title,
+                style: const TextStyle(fontSize: 28),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Text(
-                  'This is my first note This is my first note This is my first notenote This is my first note',
+                  note.desc,
                   style: TextStyle(
                       color: Colors.black.withOpacity(.7), fontSize: 20),
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 24, bottom: 24),
+            Padding(
+              padding: const EdgeInsets.only(right: 24, bottom: 24),
               child: Text(
-                '10 Oct 2024',
-                style: TextStyle(color: Colors.black),
+                note.creatAt.toString(),
+                style: const TextStyle(color: Colors.black),
               ),
             )
           ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/add_note/add_note_cubit.dart';
+import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_form_field.dart';
@@ -49,6 +50,13 @@ class _HomeViewButtonSheetState extends State<HomeViewButtonSheet> {
                 height: 14,
               ),
               CustomTextFormField(
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return "this field can't be empty";
+                  } else {
+                    return null;
+                  }
+                },
                 autovalidateMode: autovalidateMode,
                 onSaved: (value) {
                   content = value;
@@ -68,6 +76,7 @@ class _HomeViewButtonSheetState extends State<HomeViewButtonSheet> {
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                   }
+                  BlocProvider.of<NotesCubit>(context).fetchNotes;
                   setState(() {});
                 },
               ),
@@ -82,11 +91,11 @@ class _HomeViewButtonSheetState extends State<HomeViewButtonSheet> {
   }
 
   void addNote(BuildContext context) {
-     NoteModel note = NoteModel(
+    NoteModel note = NoteModel(
         title: title!,
-        desc: content,
-        date: DateTime.now(),
-        color: 0xff1123456);
+        desc: content!,
+        creatAt: DateTime.now(),
+        color: Colors.red.value);
     BlocProvider.of<AddNoteCubit>(context).addNote(note);
   }
 }

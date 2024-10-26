@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -29,7 +27,6 @@ class _AddNoteActionButtonState extends State<AddNoteActionButton> {
           builder: (context) {
             return BlocConsumer<AddNoteCubit, AddNoteState>(
               listener: (context, state) {
-                log('i am in cubit');
                 if (state is AddNoteLoading) {
                   isLoading = true;
                 } else if (state is AddNoteSuccess) {
