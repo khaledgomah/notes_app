@@ -76,7 +76,6 @@ class _HomeViewButtonSheetState extends State<HomeViewButtonSheet> {
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                   }
-                  BlocProvider.of<NotesCubit>(context).fetchNotes;
                   setState(() {});
                 },
               ),
@@ -97,5 +96,6 @@ class _HomeViewButtonSheetState extends State<HomeViewButtonSheet> {
         creatAt: DateTime.now(),
         color: Colors.red.value);
     BlocProvider.of<AddNoteCubit>(context).addNote(note);
+    BlocProvider.of<NotesCubit>(context).fetchNotes();
   }
 }
