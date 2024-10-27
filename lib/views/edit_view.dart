@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/widgets/color_item_builder.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_text_form_field.dart';
 
@@ -31,7 +32,8 @@ class _EditViewState extends State<EditView> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-
+                      widget.note.color =
+                          BlocProvider.of<NotesCubit>(context).color.value;
                       widget.note.save();
                       BlocProvider.of<NotesCubit>(context).fetchNotes();
                       Navigator.of(context).pop();
@@ -75,6 +77,10 @@ class _EditViewState extends State<EditView> {
                       labelText: 'content',
                       maxLines: 5,
                     ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    ColorItemBuilder(colorsList: colorsList)
                   ],
                 )
               ],

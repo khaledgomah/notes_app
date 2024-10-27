@@ -13,6 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      
       floatingActionButton: const AddNoteActionButton(),
       body: SafeArea(
         child: Padding(

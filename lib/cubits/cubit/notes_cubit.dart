@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:meta/meta.dart';
@@ -8,10 +10,12 @@ part 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
   List<NoteModel>? notesList;
+  Color color = const Color(0xffc1121f);
+   int selectedColorIndex = 0;
+
   fetchNotes() {
     var notesBox = Hive.box<NoteModel>(kNotesBox);
     notesList = notesBox.values.toList();
     emit(NotesSuccess());
-
   }
 }

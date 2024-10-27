@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_view.dart';
@@ -19,14 +20,13 @@ class NoteItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => EditView(
-                  note: note),
+              builder: (context) => EditView(note: note),
             ));
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          color: Colors.orange,
+          color: Color(note.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -61,7 +61,7 @@ class NoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24, bottom: 24),
               child: Text(
-                note.creatAt.toString(),
+                DateFormat.yMEd().format(DateTime.now()),
                 style: const TextStyle(color: Colors.black),
               ),
             )
