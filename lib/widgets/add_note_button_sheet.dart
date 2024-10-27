@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/add_note/add_note_cubit.dart';
 import 'package:notes_app/cubits/cubit/notes_cubit.dart';
@@ -8,7 +7,6 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/color_item_builder.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_form_field.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class AddNoteButtonSheet extends StatefulWidget {
   const AddNoteButtonSheet({

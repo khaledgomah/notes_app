@@ -15,11 +15,9 @@ class ColorItemBuilder extends StatefulWidget {
 }
 
 class _ColorItemBuilderState extends State<ColorItemBuilder> {
+  int selectedColorIndex = 0;
   @override
   Widget build(BuildContext context) {
-    int selectedColorIndex =
-        BlocProvider.of<NotesCubit>(context).selectedColorIndex;
-
     return SizedBox(
       height: 60,
       child: ListView.separated(
@@ -29,10 +27,10 @@ class _ColorItemBuilderState extends State<ColorItemBuilder> {
         ),
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
-            BlocProvider.of<NotesCubit>(context).selectedColorIndex = index;
+            selectedColorIndex = index;
             BlocProvider.of<NotesCubit>(context).color =
                 widget.colorsList[index];
-                
+
             setState(() {});
           },
           child: ColorItem(

@@ -11,7 +11,6 @@ class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
   List<NoteModel>? notesList;
   Color color = const Color(0xffc1121f);
-   int selectedColorIndex = 0;
 
   fetchNotes() {
     var notesBox = Hive.box<NoteModel>(kNotesBox);
