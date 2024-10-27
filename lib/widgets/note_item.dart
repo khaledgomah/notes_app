@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_view.dart';
@@ -22,11 +20,7 @@ class NoteItem extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => EditView(
-                  note: NoteModel(
-                      title: note.title,
-                      desc: note.desc,
-                      creatAt: note.creatAt,
-                      color: note.color)),
+                  note: note),
             ));
       },
       child: Container(

@@ -10,7 +10,8 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.maxLines = 1,
     this.onChanged, 
-     this.autovalidateMode,
+     this.autovalidateMode, 
+     this.initalValue,
   });
   final AutovalidateMode? autovalidateMode;
   final void Function(String)? onChanged;
@@ -19,9 +20,11 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final int? maxLines;
+  final String? initalValue;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue:initalValue ,
       autovalidateMode: autovalidateMode,
       onChanged: onChanged,
       maxLines: maxLines,
