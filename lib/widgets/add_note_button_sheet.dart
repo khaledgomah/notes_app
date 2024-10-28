@@ -71,7 +71,7 @@ class _AddNoteButtonSheetState extends State<AddNoteButtonSheet> {
                 height: 32,
               ),
               ColorItemBuilder(
-                colorsList: colorsList,
+                colorsList: kColorsList,
               ),
               const SizedBox(
                 height: 32,

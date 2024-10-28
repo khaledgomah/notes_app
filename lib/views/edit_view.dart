@@ -33,7 +33,7 @@ class _EditViewState extends State<EditView> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       widget.note.color =
-                      BlocProvider.of<NotesCubit>(context).color.value;
+                          BlocProvider.of<NotesCubit>(context).color.value;
                       widget.note.save();
                       BlocProvider.of<NotesCubit>(context).fetchNotes();
                       Navigator.of(context).pop();
@@ -80,8 +80,10 @@ class _EditViewState extends State<EditView> {
                     const SizedBox(
                       height: 32,
                     ),
-                    ColorItemBuilder(colorsList: colorsList,
-                    colorIndex: colorsList.indexOf(Color(widget.note.color)),)
+                    ColorItemBuilder(
+                      colorsList: kColorsList,
+                      colorIndex: kColorsList.indexOf(Color(widget.note.color)),
+                    )
                   ],
                 )
               ],
