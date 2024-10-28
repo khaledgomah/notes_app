@@ -80,7 +80,8 @@ class _EditViewState extends State<EditView> {
                     const SizedBox(
                       height: 32,
                     ),
-                    ColorItemBuilder(colorsList: colorsList)
+                    ColorItemBuilder(colorsList: colorsList,
+                    colorIndex: colorsList.indexOf(Color(widget.note.color)),)
                   ],
                 )
               ],

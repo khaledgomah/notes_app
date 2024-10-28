@@ -61,7 +61,9 @@ class NoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24, bottom: 24),
               child: Text(
-                DateFormat.yMEd().format(DateTime.now()),
+                note.creatAt.day == DateTime.now().day
+                    ? DateFormat('jm').format(note.creatAt)
+                    : DateFormat.yMd().format(note.creatAt),
                 style: const TextStyle(color: Colors.black),
               ),
             )
