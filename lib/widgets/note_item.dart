@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
+import 'package:notes_app/cubits/cubit/notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/views/edit_view.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
-    super.key, required this.onTap,
+    super.key,
+    required this.note,
   });
-final VoidCallback onTap;
+  final NoteModel note;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditView(note: note),
+            ));
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          color: Colors.orange,
+          color: Color(note.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -25,28 +38,33 @@ final VoidCallback onTap;
                 children: [
                   IconButton(
                     icon: const Icon(FontAwesomeIcons.trash),
-                    onPressed: () {},
+                    onPressed: () async {
+                      await note.delete();
+                      BlocProvider.of<NotesCubit>(context).fetchNotes();
+                    },
                   ),
                 ],
               ),
-              title: const Text(
-                'My note',
-                style: TextStyle(fontSize: 28),
+              title: Text(
+                note.title,
+                style: const TextStyle(fontSize: 28),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Text(
-                  'This is my first note This is my first note This is my first notenote This is my first note',
+                  note.desc,
                   style: TextStyle(
                       color: Colors.black.withOpacity(.7), fontSize: 20),
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 24, bottom: 24),
+            Padding(
+              padding: const EdgeInsets.only(right: 24, bottom: 24),
               child: Text(
-                '10 Oct 2024',
-                style: TextStyle(color: Colors.black),
+                note.creatAt.day == DateTime.now().day
+                    ? DateFormat('jm').format(note.creatAt)
+                    : DateFormat.yMd().format(note.creatAt),
+                style: const TextStyle(color: Colors.black),
               ),
             )
           ],

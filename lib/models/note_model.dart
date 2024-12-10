@@ -1,19 +1,25 @@
-import 'package:hive_flutter/hive_flutter.dart';
-part 'note_model.g.dart';
-@HiveType(typeId: 0)
-class NoteModel extends HiveObject{
-  @HiveField(0)
-  final String titile;
-  @HiveField(1)
-  final String desc;
-  @HiveField(2)
-  final DateTime date;
-  @HiveField(3)
-  final int color;
+import 'package:hive/hive.dart';
 
-  NoteModel(
-      {required this.titile,
-      required this.desc,
-      required this.date,
-      required this.color});
+part 'note_model.g.dart';
+
+@HiveType(typeId: 0)
+class NoteModel extends HiveObject {
+  @HiveField(0)
+   String title;
+  
+  @HiveField(1)
+   String desc;
+  
+  @HiveField(2)
+  final DateTime creatAt;  // Change this to DateTime
+  
+  @HiveField(3)
+   int color;
+
+  NoteModel({
+    required this.title,
+    required this.desc,
+    required this.creatAt,
+    required this.color,
+  });
 }

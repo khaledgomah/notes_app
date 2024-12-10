@@ -1,35 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/views/edit_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/note_item.dart';
 
-class NotesBuilder extends StatelessWidget {
+class NotesBuilder extends StatefulWidget {
   const NotesBuilder({
     super.key,
   });
 
   @override
+  State<NotesBuilder> createState() => _NotesBuilderState();
+}
+
+class _NotesBuilderState extends State<NotesBuilder> {
+  @override
+  void initState() {
+    BlocProvider.of<NotesCubit>(context).fetchNotes();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: ListView.separated(
-      itemCount: 10,
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
-      ),
-      itemBuilder: (context, index) => NoteItem(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => EditView(
-                    note: NoteModel(
-                        titile: 'hala',
-                        desc: 'hala walaa kef el ahwal',
-                        date: DateTime.now(),
-                        color: 0xff12452fea)),
-              ));
-        },
-      ),
-    ));
+    return BlocBuilder<NotesCubit, NotesState>(
+      builder: (context, state) {
+        var notesList = BlocProvider.of<NotesCubit>(context).notesList ?? [];
+        return Expanded(
+            child: ListView.separated(
+          itemCount: notesList.length,
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 10,
+          ),
+          itemBuilder: (context, index) => NoteItem(
+            note: notesList[index],
+          ),
+        ));
+      },
+    );
   }
 }
